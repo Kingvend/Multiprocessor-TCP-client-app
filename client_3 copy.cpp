@@ -21,7 +21,6 @@
  *
  */
 
-
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -58,7 +57,6 @@ int main()
 		{
 			case '1':
 			// add	
-
 			// add Name
 			printf("%s", "Name new Student: "); 
 			fflush(stdin); fflush(stdout);
@@ -162,8 +160,7 @@ int main()
 					send(s, buf, sizeof(buf),0);
 					recv(s, buf, sizeof(buf),0);
 					printf("%s\n", buf);
-				}
-				
+				}		
 			}
 			break;
 			case '4':
@@ -186,83 +183,16 @@ int main()
 			break;
 			case '5':
 			// view filter
+
 			break;
 			case '6':
 			// view sort
+
 			break;
 			case '7':
 			// exit
 			 exit(0);
-		}
-		
+		}	
 	}
 	return 0;
 }
-
-/*
-switch(p) {
-			case '1':
-			puts("kolvo mounths 1-12 :"); scanf("%s", buf);
-			send(s, buf, sizeof(buf),0);
-			puts("Symbol :"); scanf("%s", buf);
-			send(s, buf, sizeof(buf),0);
-
-			printf("sum taxes :");
-			recv(s, buf, sizeof(buf),0);
-			for(t = 0; buf[t+3];t++) printf("%c", buf[t]);
-			printf(".");
-			for(t1 = t; buf[t1];t1++) printf("%c",buf[t1]);
-			printf("\n");
-			break;
-			case '2':
-			puts("numder for edit (1 - 5)"); scanf("%s", buf);
-			send(s, buf, sizeof(buf), 0);
-			puts("What field (1-4) to edit");
-			puts("\t1 - Name");
-			puts("\t2 - Number");
-			puts("\t3 - Income");
-			puts("\t4 - Tax");
-			scanf("%s", buf);
-			send(s, buf, sizeof(buf), 0);
-            p1 = buf[0];
-            buf[0] = '\0';
-            switch(p1) {
-                case '1':
-                    printf("Name: ");
-                    fflush(stdin); fflush(stdout);
-                    scanf("%s", b); strcat(buf, b); strcat(buf, " ");
-                    scanf("%s", b); strcat(buf, b); strcat(buf, " ");
-                    scanf("%s", b); strcat(buf, b); strcat(buf, "\0");
-                    send(s, buf, sizeof(buf), 0);
-                    break;
-                case '2':
-                    printf("Number: ");
-                    fflush(stdin); fflush(stdout);
-                    scanf("%s", buf);
-                    send(s, buf, sizeof(buf), 0);
-                    break;
-                case '3':
-                    printf("Income per months: ");
-                    fflush(stdin); fflush(stdout);
-                    scanf("%s", buf);
-                    send(s, buf, sizeof(buf), 0);
-                    break;
-                case '4':
-                    printf("Tax rate per month: ");
-                    fflush(stdin); fflush(stdout);
-                    scanf("%s", buf);
-                    send(s, buf, sizeof(buf), 0);
-                    break;
-            }
-			 break;
-			case '3':
-				recv(s, buf, sizeof(buf),0); printf("%s", buf);
-				recv(s, buf, sizeof(buf),0); printf("%s", buf);
-				recv(s, buf, sizeof(buf),0); printf("%s", buf);
-				recv(s, buf, sizeof(buf),0); printf("%s", buf);
-				recv(s, buf, sizeof(buf),0); printf("%s\n", buf);
-				break;
-			case '4':
-				exit(0);
-		}
-*/
