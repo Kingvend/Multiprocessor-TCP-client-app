@@ -57,7 +57,8 @@ int main()
 		{
 			case '1':
 			// add	
-			// add Name
+			{
+				// add Name
 			printf("%s", "Name new Student: "); 
 			fflush(stdin); fflush(stdout);
 			scanf("%s", b); strcat(buf, b); strcat(buf," ");
@@ -90,10 +91,13 @@ int main()
 			send(s, buf, sizeof(buf),0);
 			recv(s, buf, sizeof(buf),0);
 			printf("%s\n", buf);
+			}
             break;
+
 			case '2':
 			// del	
-			recv(s, buf, sizeof(buf),0);
+			{
+				recv(s, buf, sizeof(buf),0);
 			CountStudent = atoi(buf);
 			for (i = 0; i < CountStudent; i++)
 			{
@@ -113,10 +117,13 @@ int main()
 			send(s, buf, sizeof(buf),0);
 			recv(s, buf, sizeof(buf),0);
 			printf("%s\n", buf);
+			}
 			break;
+
 			case '3':
 			// edit
-			recv(s, buf, sizeof(buf),0);
+			{
+				recv(s, buf, sizeof(buf),0);
 			CountStudent = atoi(buf);
 			for (i = 0; i < CountStudent; i++)
 			{
@@ -162,10 +169,13 @@ int main()
 					printf("%s\n", buf);
 				}		
 			}
+			}
 			break;
+
 			case '4':
 			//view all	
-			recv(s, buf, sizeof(buf),0);
+			{
+				recv(s, buf, sizeof(buf),0);
 			CountStudent = atoi(buf);
 			for (i = 0; i < CountStudent; i++)
 			{
@@ -180,15 +190,23 @@ int main()
 				recv(s, buf, sizeof(buf),0);
 				printf("%s\n", buf);
 			}
+			}
 			break;
+
 			case '5':
 			// view filter
+			{
 
+			}
 			break;
+
 			case '6':
 			// view sort
+			{
 
+			}
 			break;
+			
 			case '7':
 			// exit
 			 exit(0);
