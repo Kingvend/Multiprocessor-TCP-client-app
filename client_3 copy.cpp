@@ -25,9 +25,16 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+void clearBuf(char* buf)
+{
+	for(int i = 0; i < 256;i++)
+		buf[i] = '\0';
+}
 
 int main()
 {
@@ -46,9 +53,11 @@ int main()
 	rc = connect(s, (struct sockaddr *) &peer, sizeof(peer));
 
 	while(true) {
-
+		clearBuf(buf);
+		clearBuf(b);
 		puts("Choise:");
 		// menu;
+		fflush(stdin); fflush(stdout);
 		scanf("%s",buf);
 		buf[1] = '\0';
 		send(s, buf, sizeof(buf),0);
@@ -57,7 +66,7 @@ int main()
 		{
 			case '1':
 			// add	
-			{
+			{ 
 				// add Name
 			printf("%s", "Name new Student: "); 
 			fflush(stdin); fflush(stdout);
@@ -176,8 +185,9 @@ int main()
 			//view all	
 			{
 				recv(s, buf, sizeof(buf),0);
+				printf("%s\n", buf);
 			CountStudent = atoi(buf);
-			for (i = 0; i < CountStudent; i++)
+ 			for (i = 0; i < CountStudent; i++)
 			{
 				recv(s, buf, sizeof(buf),0);
 				printf("%s\n", buf);	
@@ -196,7 +206,43 @@ int main()
 			case '5':
 			// view filter
 			{
-
+				puts("What field (1-5) to filter");
+				puts("\t1 - Name");
+				puts("\t2 - Number group");
+				puts("\t3 - Birthday");
+				puts("\t4 - Phone");
+				puts("\t5 - First year");
+				fflush(stdin); fflush(stdout);
+				scanf("%s",buf);
+				send(s, buf, sizeof(buf),0);
+				recv(s, buf, sizeof(buf),0);
+				if(atoi(buf) != 0)
+				{
+					printf("%s", "Error!");
+				}
+				else
+				{
+					printf("%s", "write filter note: "); scanf("%s",buf);
+					send(s, buf, sizeof(buf),0);
+					recv(s, buf, sizeof(buf),0);
+					CountStudent = atoi(buf);
+					printf("%s%d\n","Count: ", CountStudent);
+					for (i = 0; i < CountStudent; i++)
+					{
+						recv(s, buf, sizeof(buf),0);
+						printf("%s\n", buf);	
+						recv(s, buf, sizeof(buf),0);
+						printf("%s\n", buf);
+						recv(s, buf, sizeof(buf),0);
+						printf("%s\n", buf);
+						recv(s, buf, sizeof(buf),0);
+						printf("%s\n", buf);
+						recv(s, buf, sizeof(buf),0);
+						printf("%s\n", buf);
+					}
+				}
+			recv(s, buf, sizeof(buf),0);
+			printf("%s\n", buf);	
 			}
 			break;
 
@@ -206,7 +252,7 @@ int main()
 
 			}
 			break;
-			
+
 			case '7':
 			// exit
 			 exit(0);
