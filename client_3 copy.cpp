@@ -249,7 +249,39 @@ int main()
 			case '6':
 			// view sort
 			{
-
+				puts("What field (1-5) to sort");
+				puts("\t1 - Name");
+				puts("\t2 - Number group");
+				puts("\t3 - Birthday");
+				puts("\t4 - Phone");
+				puts("\t5 - First year");
+				fflush(stdin); fflush(stdout);
+				scanf("%s",buf);
+				send(s, buf, sizeof(buf),0);
+				recv(s, buf, sizeof(buf),0);
+				if(atoi(buf) != 0)
+				{
+					printf("%s", "Error!");
+				}
+				else
+				{
+					recv(s, buf, sizeof(buf),0);
+					printf("%s\n", buf);
+				CountStudent = atoi(buf);
+				for (i = 0; i < CountStudent; i++)
+				{
+					recv(s, buf, sizeof(buf),0);
+					printf("%s\n", buf);	
+					recv(s, buf, sizeof(buf),0);
+					printf("%s\n", buf);
+					recv(s, buf, sizeof(buf),0);
+					printf("%s\n", buf);
+					recv(s, buf, sizeof(buf),0);
+					printf("%s\n", buf);
+					recv(s, buf, sizeof(buf),0);
+					printf("%s\n", buf);
+				}
+				}
 			}
 			break;
 
