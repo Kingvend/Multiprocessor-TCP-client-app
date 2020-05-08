@@ -55,8 +55,16 @@ int main()
 	while(true) {
 		clearBuf(buf);
 		clearBuf(b);
-		puts("Choise:");
+		puts("\n\nChoise:");
 		// menu;
+		puts("\t1 - Add new student");
+		puts("\t2 - Delete Student");
+		puts("\t3 - Edit student");
+		puts("\t4 - View all student");
+		puts("\t5 - View with filter");
+		puts("\t6 - View with sort");
+		puts("\t7 - Exit\n\n");
+
 		fflush(stdin); fflush(stdout);
 		scanf("%s",buf);
 		buf[1] = '\0';
@@ -185,7 +193,7 @@ int main()
 			//view all	
 			{
 				recv(s, buf, sizeof(buf),0);
-				printf("%s\n", buf);
+				//printf("%s\n", buf);
 			CountStudent = atoi(buf);
  			for (i = 0; i < CountStudent; i++)
 			{
@@ -226,7 +234,7 @@ int main()
 					send(s, buf, sizeof(buf),0);
 					recv(s, buf, sizeof(buf),0);
 					CountStudent = atoi(buf);
-					printf("%s%d\n","Count: ", CountStudent);
+					//printf("%s%d\n","Count: ", CountStudent);
 					for (i = 0; i < CountStudent; i++)
 					{
 						recv(s, buf, sizeof(buf),0);
